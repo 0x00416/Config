@@ -1,12 +1,12 @@
-  - DOMAIN-SUFFIX,zhihuishu.com,DIRECT
-  - DOMAIN-SUFFIX,educoder.net,DIRECT
-  - DOMAIN-SUFFIX,hwwt8.com,DIRECT
-  - DOMAIN-SUFFIX,weixinbridge.com,DIRECT
-  - DOMAIN-SUFFIX,zhuanstatic.com,DIRECT
-  - DOMAIN-SUFFIX,elemecdn,DIRECT
-  - DOMAIN-SUFFIX,volces.com,DIRECT
-  - DOMAIN-SUFFIX,img898.com,DIRECT
-  - DOMAIN-SUFFIX,youpinimg.com,DIRECT
-  - DOMAIN-SUFFIX,youpin898.com,DIRECT
-  - DOMAIN-SUFFIX,d.design,DIRECT
-  - DOMAIN-SUFFIX,daxuesoutijiang.com,DIRECT
+DOMAIN-SUFFIX,zhihuishu.com
+DOMAIN-SUFFIX,educoder.net
+DOMAIN-SUFFIX,hwwt8.com
+DOMAIN-SUFFIX,weixinbridge.com
+DOMAIN-SUFFIX,zhuanstatic.com
+DOMAIN-SUFFIX,elemecdn
+DOMAIN-SUFFIX,volces.com
+DOMAIN-SUFFIX,img898.com
+DOMAIN-SUFFIX,youpinimg.com
+DOMAIN-SUFFIX,youpin898.com
+DOMAIN-SUFFIX,d.design
+DOMAIN-SUFFIX,daxuesoutijiang.com
