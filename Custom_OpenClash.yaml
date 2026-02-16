@@ -513,8 +513,8 @@ rule-providers:
     interval: 10800
     path: ./rule_provider/Custom_Direct_Domain.yaml
     type: http
-    url: "https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Direct_Domain.mrs"
-    format: mrs  # 二进制格式
+    url: "https://raw.githubusercontent.com/0x00416/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Direct_Domain.yaml"
+    format: yaml
 
   Custom_Direct_IP:
     behavior: classical  # 混合类型
