@@ -400,36 +400,39 @@ proxy-groups:
     filter: (🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|纽约|纽纽|亚特兰大|迈阿密|华盛顿|United States|UnitedStates|UNITED STATES|USA|America|AMERICA|JFK|EWR|IAD|ATL|ORD|MIA|NYC|LAX|SFO|SEA|DFW|SJC)
     proxies:
 
-
   - name: "🇯🇵 日本节点"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
-    filter: (🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|Japan|JAPAN|JPN|NRT|HND|KIX|TYO|OSA|关西|Kansai|KANSAI)
-    proxies:
     interval: 300
     tolerance: 50
+    include-all: true
+    filter: (🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|Japan|JAPAN|JPN|NRT|HND|KIX|TYO|OSA|关西|Kansai|KANSAI)
+    proxies:
 
   - name: "🇸🇬 新加坡节点"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
-    filter: (🇸🇬|新加坡|坡|狮城|Singapore|SINGAPORE|SIN)'
-    proxies:
     interval: 300
     tolerance: 50
+    include-all: true
+    filter: (🇸🇬|新加坡|坡|狮城|Singapore|SINGAPORE|SIN)
+    proxies:
 
   - name: "🇼🇸 台湾节点"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
-    filter: '(🇹🇼|🇼🇸|台|新北|彰化|Taiwan|TAIWAN|TWN|TPE|ROC)'
-    proxies:
     interval: 300
     tolerance: 50
+    include-all: true
+    filter: (🇹🇼|🇼🇸|台|新北|彰化|Taiwan|TAIWAN|TWN|TPE|ROC)
+    proxies:
 
   - name: "🌐 所有地区"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 50
+    include-all: true
     proxies:
 
   - name: "🎯 全球直连"
