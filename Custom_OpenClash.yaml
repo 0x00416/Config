@@ -51,7 +51,9 @@ dns:
     - "ntp7.*.com"
     - "*.time.edu.cn"
     - "*.oix_nodes.com"
-  nameserver-policy: { +.oix_nodes.com: 1.1.1.1 }
+  nameserver-policy:
+    +.google.com:
+      - 8.8.8.8
     
 proxies: ~
 
@@ -349,6 +351,14 @@ proxy-groups:
     - "🚀 手动选择"
     - "♻️ 自动选择"
 
+  - name: "💬 Apple Push"
+    type: select
+    proxies:
+    - "🚀 手动选择"
+    - "🍎 苹果服务"
+    - "🎯 全球直连"
+    - "♻️ 自动选择"
+
   - name: "Ⓜ️ 微软服务"
     type: select
     proxies:
@@ -365,6 +375,7 @@ proxy-groups:
   - name: "🎮 游戏平台"
     type: select
     proxies:
+    - "🚀 手动选择"
     - "🎯 全球直连"
     - "🇭🇰 香港节点"
     - "🇺🇸 美国节点"
@@ -372,7 +383,6 @@ proxy-groups:
     - "🇸🇬 新加坡节点"
     - "🇼🇸 台湾节点"
     - "🌐 所有地区"
-    - "🚀 手动选择"
     - "♻️ 自动选择"
 
   - name: "🎮 Steam"
@@ -511,6 +521,7 @@ rules:
 - "GEOSITE,steam,🎮 Steam"  # Steam
 - "GEOSITE,youtube,📹 YouTube"  # YouTube
 - "GEOSITE,apple-tvplus,🎥 AppleTV+"  # Apple TV+
+- "DOMAIN,push.apple.com,💬 Apple Push"  # Apple Push
 - "GEOSITE,apple,🍎 苹果服务"  # 苹果服务
 - "GEOSITE,microsoft,Ⓜ️ 微软服务"  # 微软服务
 - "GEOSITE,googlefcm,📢 谷歌FCM"  # Google FCM推送
