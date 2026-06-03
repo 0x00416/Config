@@ -5,9 +5,15 @@ allow-lan: true
 mode: rule
 log-level: info
 external-controller: 127.0.0.1:9090
-experimental:
-  ignore-resolve-fail: true
-ipv6: false
+tun:
+  enable: true
+  stack: gvisor
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: true
+  dns-hijack:
+    - any:53
+    - tcp://any:53
 dns:
   enable: true
   ipv6: false
@@ -454,7 +460,8 @@ proxy-groups:
     interval: 300
     tolerance: 50
     include-all: true
-    filter: (🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|Japan|JAPAN|JPN|NRT|HND|KIX|TYO|OSA|关西|Kansai|KANSAI)
+#    filter: (🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|Japan|JAPAN|JPN|NRT|HND|KIX|TYO|OSA|关西|Kansai|KANSAI)
+    filter: (Tokyo|SoftBank)
     proxies:
 
   - name: "🇸🇬 新加坡节点"
@@ -500,6 +507,7 @@ proxy-groups:
 # GEOSITE=域名分类,GEOIP=IP归属,RULE-SET=外部规则集,MATCH=兜底规则
 # no-resolve=不进行DNS解析直接匹配IP（提高性能，避免DNS泄露）
 rules:
+- "DOMAIN,push.apple.com,💬 Apple Push"  # Apple Push
 - "GEOSITE,private,🎯 全球直连"  # 私有域名
 - "GEOIP,private,🎯 全球直连,no-resolve"  # 私有IP
 - "RULE-SET,Custom_Direct_Domain,🎯 全球直连"  # 自定义直连域名
@@ -521,7 +529,6 @@ rules:
 - "GEOSITE,steam,🎮 Steam"  # Steam
 - "GEOSITE,youtube,📹 YouTube"  # YouTube
 - "GEOSITE,apple-tvplus,🎥 AppleTV+"  # Apple TV+
-- "DOMAIN,push.apple.com,💬 Apple Push"  # Apple Push
 - "GEOSITE,apple,🍎 苹果服务"  # 苹果服务
 - "GEOSITE,microsoft,Ⓜ️ 微软服务"  # 微软服务
 - "GEOSITE,googlefcm,📢 谷歌FCM"  # Google FCM推送
@@ -581,8 +588,8 @@ rule-providers:
     interval: 10800  # 3小时
     path: ./rule_provider/Custom_Proxy_Domain.yaml
     type: http
-    url: "https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Proxy_Domain.mrs"
-    format: mrs  # 二进制格式
+    url: "https://raw.githubusercontent.com/0x00416/Custom_OpenClash_Rules/refs/heads/main/rule/Custom_Proxy_Domain.yaml"
+    format: yaml
 
   Custom_Proxy_IP:
     behavior: classical  # 混合类型
