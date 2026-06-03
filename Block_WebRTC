@@ -1,0 +1,22 @@
+payload:
+  # STUN / TURN 标准端口
+  - AND,((NETWORK,UDP),(DST-PORT,3478-3481))
+  - AND,((NETWORK,TCP),(DST-PORT,3478-3481))
+  - AND,((NETWORK,UDP),(DST-PORT,5349))
+  - AND,((NETWORK,TCP),(DST-PORT,5349))
+
+  # Google STUN 常用端口
+  - AND,((NETWORK,UDP),(DST-PORT,19302-19309))
+  - AND,((NETWORK,TCP),(DST-PORT,19302-19309))
+
+  # 常见 STUN / TURN 域名兜底
+  - DOMAIN-KEYWORD,stun
+  - DOMAIN-KEYWORD,turn
+  - DOMAIN-SUFFIX,stun.l.google.com
+  - DOMAIN-SUFFIX,stun1.l.google.com
+  - DOMAIN-SUFFIX,stun2.l.google.com
+  - DOMAIN-SUFFIX,stun3.l.google.com
+  - DOMAIN-SUFFIX,stun4.l.google.com
+
+  # 可选：拦 UDP/443，能防一部分 TURN/QUIC，但可能影响 HTTP3、视频会议
+  # - AND,((NETWORK,UDP),(DST-PORT,443))
