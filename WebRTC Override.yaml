@@ -1,7 +1,0 @@
-# mihomo override: WebRTC / STUN / TURN leak protection
-
-rules:
-  # Block common WebRTC STUN/TURN UDP ports
-  - AND,((NETWORK,UDP),(DST-PORT,3478)),REJECT
-  - AND,((NETWORK,UDP),(DST-PORT,5349)),REJECT
-  - AND,((NETWORK,UDP),(DST-PORT,19302)),REJECT
