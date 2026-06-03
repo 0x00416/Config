@@ -13,11 +13,10 @@ tun:
   strict-route: true
   dns-hijack:
     - any:53
-    - tcp://any:53
 dns:
   enable: true
+  listen: 0.0.0.0:1053
   ipv6: false
-  listen: 0.0.0.0:53
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   default-nameserver:
@@ -58,8 +57,8 @@ dns:
     - "*.time.edu.cn"
     - "*.oix_nodes.com"
   nameserver-policy:
-    +.google.com:
-      - 8.8.8.8
+    '+.google.com': '8.8.8.8'
+
     
 proxies: ~
 
@@ -436,6 +435,13 @@ proxy-groups:
     - "🐟 遵循规则"
     - "🎯 全球直连"
 
+  - name: "🚫 WebRTC"
+    type: select
+    proxies:
+    - REJECT
+    - "🚀 手动选择"    
+    - "🎯 全球直连"
+
   - name: "🇭🇰 香港节点"
     type: url-test
     url: https://cp.cloudflare.com/generate_204
@@ -510,6 +516,7 @@ rules:
 - "DOMAIN,push.apple.com,💬 Apple Push"  # Apple Push
 - "GEOSITE,private,🎯 全球直连"  # 私有域名
 - "GEOIP,private,🎯 全球直连,no-resolve"  # 私有IP
+- "RULE-SET,WebRTC,🚫 WebRTC" #WebRTC
 - "RULE-SET,Custom_Direct_Domain,🎯 全球直连"  # 自定义直连域名
 - "RULE-SET,Custom_Direct_IP,🎯 全球直连"  # 自定义直连IP
 - "RULE-SET,Custom_Proxy_Domain,🚀 手动选择"  # 自定义代理域名
@@ -606,3 +613,12 @@ rule-providers:
     type: http
     url: "https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Steam_CDN_Classical.yaml"
     format: yaml
+
+  WebRTC:
+    behavior: classical
+    interval: 10800
+    path: ./rule_provider/WebRTC.yaml
+    type: http
+    url: "https://raw.githubusercontent.com/0x00416/Config/refs/heads/main/WebRTC.yaml"
+    format: yaml
+    
