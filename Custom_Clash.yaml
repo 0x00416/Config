@@ -55,10 +55,12 @@ dns:
     - "ntp6.*.com"
     - "ntp7.*.com"
     - "*.time.edu.cn"
-    - "*.oix_nodes.com"
-  nameserver-policy:
-    '+.google.com': '8.8.8.8'
 
+geox-url:
+  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+  mmdb: "https://cdn.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/Country.mmdb"
+  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
     
 proxies: ~
 
@@ -467,7 +469,7 @@ proxy-groups:
     tolerance: 50
     include-all: true
 #    filter: (🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|Japan|JAPAN|JPN|NRT|HND|KIX|TYO|OSA|关西|Kansai|KANSAI)
-    filter: (Tokyo|SoftBank)
+    filter: (SoftBank)
     proxies:
 
   - name: "🇸🇬 新加坡节点"
@@ -485,7 +487,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     include-all: true
-    filter: (🇹🇼|🇼🇸|台|新北|彰化|Taiwan|TAIWAN|TWN|TPE|ROC)
+    filter: (🇹🇼|🇼🇸|台|新北|彰化|Taiwan|TAIWAN|TWN|TPE|ROC|TW)
     proxies:
 
   - name: "🌐 所有地区"
@@ -513,7 +515,6 @@ proxy-groups:
 # GEOSITE=域名分类,GEOIP=IP归属,RULE-SET=外部规则集,MATCH=兜底规则
 # no-resolve=不进行DNS解析直接匹配IP（提高性能，避免DNS泄露）
 rules:
-- "DOMAIN,push.apple.com,💬 Apple Push"  # Apple Push
 - "GEOSITE,private,🎯 全球直连"  # 私有域名
 - "GEOIP,private,🎯 全球直连,no-resolve"  # 私有IP
 - "RULE-SET,WebRTC,🚫 WebRTC" #WebRTC
@@ -535,6 +536,7 @@ rules:
 - "GEOSITE,category-speedtest,🚀 测速工具"  # 测速工具
 - "GEOSITE,steam,🎮 Steam"  # Steam
 - "GEOSITE,youtube,📹 YouTube"  # YouTube
+- "RULE-SET,ApplePush,💬 Apple Push"# Apple Push
 - "GEOSITE,apple-tvplus,🎥 AppleTV+"  # Apple TV+
 - "GEOSITE,apple,🍎 苹果服务"  # 苹果服务
 - "GEOSITE,microsoft,Ⓜ️ 微软服务"  # 微软服务
@@ -614,6 +616,14 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Steam_CDN_Classical.yaml"
     format: yaml
 
+  ApplePush:
+    type: http
+    behavior: classical
+    interval: 10800
+    url: "https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/apns.list"
+    path: ./rule_provider/ApplePush.list
+    format: text
+
   WebRTC:
     behavior: classical
     interval: 10800
@@ -621,4 +631,5 @@ rule-providers:
     type: http
     url: "https://raw.githubusercontent.com/0x00416/Config/refs/heads/main/WebRTC.yaml"
     format: yaml
+    
     
