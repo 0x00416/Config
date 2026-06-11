@@ -1,22 +1,41 @@
 payload:
-  # STUN / TURN 标准端口
-  - AND,((NETWORK,UDP),(DST-PORT,3478-3481))
-  - AND,((NETWORK,TCP),(DST-PORT,3478-3481))
+  # WebRTC / STUN 协议识别
+  - PROTOCOL,STUN
+
+  # STUN / TURN 常见端口
+  - AND,((NETWORK,UDP),(DST-PORT,3478))
+  - AND,((NETWORK,TCP),(DST-PORT,3478))
+  - AND,((NETWORK,UDP),(DST-PORT,3479))
+  - AND,((NETWORK,TCP),(DST-PORT,3479))
+
+  # TURN over TLS / DTLS 常见端口
   - AND,((NETWORK,UDP),(DST-PORT,5349))
   - AND,((NETWORK,TCP),(DST-PORT,5349))
+  - AND,((NETWORK,UDP),(DST-PORT,5350))
+  - AND,((NETWORK,TCP),(DST-PORT,5350))
 
-  # Google STUN 常用端口
-  - AND,((NETWORK,UDP),(DST-PORT,19302-19309))
-  - AND,((NETWORK,TCP),(DST-PORT,19302-19309))
+  # Google / Chrome 常见 STUN 端口
+  - AND,((NETWORK,UDP),(DST-PORT,19302))
+  - AND,((NETWORK,TCP),(DST-PORT,19302))
 
-  # 常见 STUN / TURN 域名兜底
-  - DOMAIN-KEYWORD,stun
-  - DOMAIN-KEYWORD,turn
+  # 常见 STUN / TURN 域名
   - DOMAIN-SUFFIX,stun.l.google.com
   - DOMAIN-SUFFIX,stun1.l.google.com
   - DOMAIN-SUFFIX,stun2.l.google.com
   - DOMAIN-SUFFIX,stun3.l.google.com
   - DOMAIN-SUFFIX,stun4.l.google.com
+  - DOMAIN-SUFFIX,stun.cloudflare.com
+  - DOMAIN-SUFFIX,stun.nextcloud.com
+  - DOMAIN-SUFFIX,stun.counterpath.com
+  - DOMAIN-SUFFIX,stun.ekiga.net
+  - DOMAIN-SUFFIX,stun.ideasip.com
+  - DOMAIN-SUFFIX,stun.schlund.de
+  - DOMAIN-SUFFIX,stun.voiparound.com
+  - DOMAIN-SUFFIX,stun.voipbuster.com
+  - DOMAIN-SUFFIX,stun.voipstunt.com
+  - DOMAIN-SUFFIX,stun.voxgratia.org
+  - DOMAIN-SUFFIX,stun.services.mozilla.com
 
-  # 可选：拦 UDP/443，能防一部分 TURN/QUIC，但可能影响 HTTP3、视频会议
-  # - AND,((NETWORK,UDP),(DST-PORT,443))
+  # 关键词兜底，可能误伤语音/视频通话
+  - DOMAIN-KEYWORD,stun
+  - DOMAIN-KEYWORD,turn
